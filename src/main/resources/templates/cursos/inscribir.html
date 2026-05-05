@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inscribir Estudiante</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Inscribir en: <span th:text="${curso.nombre}"></span></h1>
+    <a th:href="@{/dashboard}" class="back-button">Volver al Dashboard</a>
+
+    <h2>Estudiantes ya inscritos</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="e : ${curso.estudiantes}">
+                <td th:text="${e.nombre}"></td>
+                <td th:text="${e.apellido}"></td>
+                <td>
+                    <form th:action="@{/cursos/{cursoId}/desinscribir/{eId}(cursoId=${curso.id},eId=${e.id})}" method="post">
+                        <button type="submit">Desinscribir</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Inscribir estudiante</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="e : ${estudiantes}">
+                <td th:text="${e.nombre}"></td>
+                <td th:text="${e.apellido}"></td>
+                <td>
+                    <form method="post" th:action="@{/cursos/{cursoId}/inscribir/{eId}(cursoId=${curso.id},eId=${e.id})}">
+                        <input type="hidden" name="cursoId" th:value="${curso.id}"/>
+                        <input type="hidden" name="estudianteId" th:value="${e.id}"/>
+                        <button type="submit">Inscribir</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/cursos}">Volver</a>
+</body>
+</html>
