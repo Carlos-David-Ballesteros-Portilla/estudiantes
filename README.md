@@ -76,17 +76,18 @@ credenciales registradas y confirmar que el dashboard muestra el nombre del
 usuario. Intentar acceder a /admin con el usuario USER y verificar que Spring
 Security muestra error 403 Forbidden.
 
-
-
-
+![imagen de registro de pepito](image-1.png)
+![imagen mostrando que pepito se registro correctamente](image-2.png)
+![imagen mostrando el dashboard de pepito](image-3.png)
 ### Punto de Control 3
 Iniciar sesión como admin@universidad.edu. Verificar que /admin es accesible y
 muestra la lista de usuarios. Cerrar sesión con el botón "Cerrar Sesión" y verificar
 que Spring Security invalida la sesión y redirige a /login?logout. Intentar acceder
 a /dashboard después del logout y verificar que redirige a /login.
 
-
-
+![captura mostrando el dashboard de admin](image-4.png)
+![mostrando que al salir de admin se redirige a logout](image-5.png)
+![login despues de redirigirse a dashboard despues de cerrar sesion](image-6.png)
 
 ## Estructura del Proyecto
 
